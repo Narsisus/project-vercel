@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Layout from "../components/layout";
-import { Button, Checkbox, Container, Divider, NumberInput, TextInput } from "@mantine/core";
+import { Button, Checkbox, Container, Divider, NumberInput, TextInput, Textarea, MultiSelect } from "@mantine/core";
 import { isNotEmpty, useForm } from "@mantine/form";
 import { useState } from "react";
 import axios, { AxiosError } from "axios";
@@ -18,12 +18,18 @@ export default function BookCreatePage() {
       author: "",
       year: 2024,
       is_published: false,
+      description: "", // New field for book description
+      summary: "",     // New field for book summary
+      categories: [],  // New field for categories
     },
 
     validate: {
       title: isNotEmpty("กรุณาระบุชื่อหนังสือ"),
       author: isNotEmpty("กรุณาระบุชื่อผู้แต่ง"),
       year: isNotEmpty("กรุณาระบุปีที่พิมพ์หนังสือ"),
+      description : isNotEmpty("กรุณาระบุรายละเอียดหนังสือ"),
+      summary: isNotEmpty("กรุณาระบุเรื่องย่อ"),
+      categories: isNotEmpty("กรุณาระบุหมวดหมู่"),
     },
   });
 
@@ -91,9 +97,24 @@ export default function BookCreatePage() {
               {...bookCreateForm.getInputProps("year")}
             />
 
-            {/* TODO: เพิ่มรายละเอียดหนังสือ */}
-            {/* TODO: เพิ่มเรื่องย่อ */}
-            {/* TODO: เพิ่มหมวดหมู่(s) */}
+          <Textarea
+            label="รายละเอียดหนังสือ"
+            placeholder="รายละเอียดหนังสือ"
+            {...bookCreateForm.getInputProps("description")}
+          />
+
+          <Textarea
+            label="เรื่องย่อ"
+            placeholder="เรื่องย่อ"
+            {...bookCreateForm.getInputProps("summary")}
+          />
+
+          <MultiSelect
+            label="หมวดหมู่(s)"
+            placeholder="เลือกหมวดหมู่"
+            data={[]} // You can populate this with a list of categories
+            {...bookCreateForm.getInputProps("categories")}
+          />
 
             <Checkbox
               label="เผยแพร่"
