@@ -112,7 +112,7 @@ export default function BookCreatePage() {
           <MultiSelect
             label="หมวดหมู่(s)"
             placeholder="เลือกหมวดหมู่"
-            data={[]} // You can populate this with a list of categories
+            data={["หมวดหมู่ 1", "หมวดหมู่ 2", "หมวดหมู่ 3", "หมวดหมู่ 4"]} // Replace with your list of categories
             {...bookCreateForm.getInputProps("categories")}
           />
 
