@@ -32,13 +32,9 @@ export default function HomePage() {
           </div>
         </div>
         <p className="text-right mt-8">
-          ปัจจุบันค่าเฟ่ และห้องสมุดของเรา อยู่ในช่วงการดูแลของ ....
+          ปัจจุบันค่าเฟ่ และห้องสมุดของเรา อยู่ในช่วงการดูแลของ นายภูริพัทธ์ ชนะภัย รหัสประจำตัวนักศึกษา 65070181 
           {/* TODO: ชื่อของตนเอง, รหัสประจำตัวนักศึกษา และแนะนำคาเฟ่นี้ต่ออีกสักหน่อย + ใส่รูปของตนเอง (ไม่จำเป็นหากไม่สะดวกใจใส่รูป) */}
-          ซึ่งมีบริการ... Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto
-          placeat sit ea sapiente officia sunt cumque impedit, reiciendis quis eius asperiores!
-          Minus, mollitia? Vitae inventore odio quod ducimus similique, expedita sequi, reiciendis
-          rem recusandae impedit voluptatibus quo veritatis ut quis et suscipit? Eligendi, neque!
-          Earum quaerat unde similique totam. Pariatur!
+          ซึ่งมีบริการ กาแฟ ชา ขนม และหนังสือที่น่าสนใจ สำหรับนักเรียน นักศึกษา และคนทั่วไป ที่ต้องการเรียนรู้เรื่องใหม่ๆ และพักผ่อนอย่างสงบ ๆ ในบรรยากาศที่เป็นกันเอง
         </p>
       </section>
 
