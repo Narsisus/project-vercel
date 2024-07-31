@@ -178,6 +178,7 @@ export default function BookEditById() {
                 <MultiSelect
                   label="หมวดหมู่(s)"
                   placeholder="เลือกหมวดหมู่"
+                  data={["หมวดหมู่ 1", "หมวดหมู่ 2", "หมวดหมู่ 3", "หมวดหมู่ 4"]}
                   {...bookEditForm.getInputProps("categories")}
                 />
                 
