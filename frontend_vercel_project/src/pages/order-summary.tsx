@@ -82,8 +82,8 @@ export default function OrderSummaryPage() {
 
   return (
     <Layout>
-      <section className="container mx-auto py-8">
-        <h1 className="text-xl mb-4">สรุปคำสั่งซื้อ</h1>
+      <section className="container mx-auto py-8 max-w-lg px-4">
+        <h1 className="text-xl mb-4 text-center">สรุปคำสั่งซื้อ</h1>
 
         <div className="space-y-4">
           {orderItems.map((item, index) => {
@@ -107,12 +107,14 @@ export default function OrderSummaryPage() {
           placeholder="เพิ่มหมายเหตุ"
           {...orderCreateForm.getInputProps("comments")}
           className="mt-4"
+          autosize
+          minRows={3}
         />
 
         <Button
           onClick={handleSubmitOrder}
           loading={isProcessing}
-          className="mt-4"
+          className="mt-4 w-full"
         >
           ยืนยันคำสั่งซื้อ
         </Button>
