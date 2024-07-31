@@ -25,7 +25,7 @@ export default function OrderSummaryPage() {
     setIsProcessing(true);
 
     try {
-      const response = await axios.post("/orders", {
+      await axios.post("/orders", {
         total_or: orderItems.map((item) => ({
           cafe_id: item.cafeId,
           quantity: item.quantity,
