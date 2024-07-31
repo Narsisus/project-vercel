@@ -70,7 +70,7 @@ export default function CafesPage() {
           {cafes?.map((cafe) => (
             <div className="border border-solid border-neutral-200" key={cafe.id}>
               <img
-                src= "project-vercel/frontend_vercel_project/src/assets/images/americano.jpg"
+                src= "/assets/images/coffee-1.jpg"
                 alt={cafe.name}
                 className="w-full object-cover aspect-[3/4]"
               />
