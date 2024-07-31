@@ -22,7 +22,6 @@ export default function OrderSummaryPage() {
   });
 
   useEffect(() => {
-    // Retrieve order items from local storage
     const savedOrderItems = localStorage.getItem("orderItems");
     if (savedOrderItems) {
       setOrderItems(JSON.parse(savedOrderItems));
@@ -60,7 +59,6 @@ export default function OrderSummaryPage() {
       navigate("/cafes");
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        // Handle Axios error
         const errorMessage = error.response?.data?.message || "เกิดข้อผิดพลาดบางอย่าง";
         notifications.show({
           title: "เกิดข้อผิดพลาด",
@@ -68,7 +66,6 @@ export default function OrderSummaryPage() {
           color: "red",
         });
       } else {
-        // Handle non-Axios error
         notifications.show({
           title: "เกิดข้อผิดพลาด",
           message: "กรุณาลองอีกครั้ง หรือดูที่ Console สำหรับข้อมูลเพิ่มเติม",
