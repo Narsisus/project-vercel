@@ -1,4 +1,4 @@
-import { Alert, Button, Container, Divider } from "@mantine/core";
+import { Alert, Badge, Button, Container, Divider } from "@mantine/core";
 import Layout from "../components/layout";
 import { Link, useParams } from "react-router-dom";
 import { Book } from "../lib/models";
@@ -53,7 +53,9 @@ export default function BookByIdPage() {
                   <h3>หมวดหมู่</h3>
                   {/* TODO: เพิ่มหมวดหมู่(s) */}
                   <div className="flex flex-wrap gap-2">
-                    
+                    {book.categories.map((category) => (
+                      <Badge key={category} color="teal">#{category}</Badge>
+                    ))}
                   </div>
                 </div>
               </div>
