@@ -52,11 +52,9 @@ export default function BookByIdPage() {
 
                   <h3>หมวดหมู่</h3>
                   {/* TODO: เพิ่มหมวดหมู่(s) */}
-                  {/* <div className="flex flex-wrap gap-2">
-                    {book.categories.map((category) => (
-                      <Badge key={category} color="teal">#{category}</Badge>
-                    ))}
-                  </div> */}
+                  <div className="flex flex-wrap gap-2">
+                    
+                  </div>
                 </div>
               </div>
 
