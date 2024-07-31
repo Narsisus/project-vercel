@@ -37,7 +37,7 @@ export default function CafesPage() {
 
     // Store order data in local storage or state management
     localStorage.setItem("orderItems", JSON.stringify(orderItems));
-    navigate("/order-create");
+    navigate("/order-summary");
   };
 
   return (

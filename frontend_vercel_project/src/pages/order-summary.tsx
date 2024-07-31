@@ -4,12 +4,15 @@ import Layout from "../components/layout";
 import { Button, Textarea } from "@mantine/core";
 import axios from "axios";
 import { notifications } from "@mantine/notifications";
+import useSWR from "swr";
 
 export default function OrderSummaryPage() {
   const navigate = useNavigate();
   const [orderItems, setOrderItems] = useState<any[]>([]);
   const [comments, setComments] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
+
+  const { data: cafes } = useSWR("/cafes");
 
   useEffect(() => {
     // Retrieve order items from local storage
@@ -21,16 +24,23 @@ export default function OrderSummaryPage() {
     }
   }, [navigate]);
 
+  const calculateTotalPrice = () => {
+    return orderItems.reduce((sum, item) => {
+      const cafe = cafes?.find((cafe: any) => cafe.id === item.cafeId);
+      return sum + (cafe?.price || 0) * item.quantity;
+    }, 0);
+  };
+
   const handleSubmitOrder = async () => {
     setIsProcessing(true);
 
     try {
-      await axios.post("/orders", {
+      const response = await axios.post("/orders", {
         total_or: orderItems.map((item) => ({
           cafe_id: item.cafeId,
           quantity: item.quantity,
         })),
-        total_price: orderItems.reduce((sum, item) => sum + item.quantity * 100, 0), // Adjust price calculation as needed
+        total_price: calculateTotalPrice(),
         comments,
         status: "Pending",
       });
@@ -60,12 +70,20 @@ export default function OrderSummaryPage() {
         <h1 className="text-xl mb-4">สรุปคำสั่งซื้อ</h1>
 
         <div className="space-y-4">
-          {orderItems.map((item, index) => (
-            <div key={index} className="flex justify-between">
-              <span>เมนู ID: {item.cafeId}</span>
-              <span>จำนวน: {item.quantity}</span>
-            </div>
-          ))}
+          {orderItems.map((item, index) => {
+            const cafe = cafes?.find((cafe: any) => cafe.id === item.cafeId);
+            return (
+              <div key={index} className="flex justify-between">
+                <span>{cafe?.name || "เมนูไม่พบ"}</span>
+                <span>จำนวน: {item.quantity}</span>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="flex justify-between mt-4">
+          <span className="font-bold">ราคารวม:</span>
+          <span className="font-bold">{calculateTotalPrice()} บาท</span>
         </div>
 
         <Textarea

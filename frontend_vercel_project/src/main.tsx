@@ -15,7 +15,7 @@ import BookEditById from "./pages/book-edit-by-id";
 import { ModalsProvider } from "@mantine/modals";
 import BookCreatePage from "./pages/book-create";
 import CafesPage from "./pages/cafes";
-import OrderSummaryPage from "./pages/order-create";
+import OrderSummaryPage from "./pages/order-summary";
 
 
 
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
   },
 
   {
-    path: "/order-create",
+    path: "/order-summary",
     element: <OrderSummaryPage />,
   },
 ]);
