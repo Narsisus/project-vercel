@@ -2,6 +2,11 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Layout from "../components/layout";
 import cafeBackgroundImage from "../assets/images/life-coffee-espresso.jpg";
+import late from "../assets/images/late.jpg";
+import espresso from "../assets/images/life-coffee-espresso.jpg";
+import americano from "../assets/images/americano.jpg";
+import cappuccino from "../assets/images/cappuccino.jpg";
+import mocha from "../assets/images/mocha.jpg";
 import useSWR from "swr";
 import { Cafe } from "../lib/models";
 import Loading from "../components/loading";
@@ -70,7 +75,7 @@ export default function CafesPage() {
           {cafes?.map((cafe) => (
             <div className="border border-solid border-neutral-200" key={cafe.id}>
               <img
-                src= "/src/assets/images/life-coffee-espresso.jpg"
+                src= {cafe.id === 3 ? late : cafe.id === 1 ? espresso : cafe.id === 2 ? americano : cafe.id === 4 ? cappuccino : mocha}
                 alt={cafe.name}
                 className="w-full object-cover aspect-[3/4]"
               />
