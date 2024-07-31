@@ -41,7 +41,7 @@ export default function OrderSummaryPage() {
   const handleSubmitOrder = async () => {
     setIsProcessing(true);
     try {
-      const response = await axios.post("/orders", {
+      await axios.post("/orders", {
         total_order: orderItems.flatMap(item =>
           Array(item.quantity).fill({ cafe_id: item.cafeId })
         ),
