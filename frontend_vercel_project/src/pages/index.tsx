@@ -2,6 +2,7 @@ import Layout from "../components/layout";
 import cafeBackgroundImage from "../assets/images/bg-cafe-1.jpg";
 import ajPanwitImage from "../assets/images/aj-panwit.jpg";
 import coffeeImage from "../assets/images/coffee-1.jpg";
+import myimg from "../assets/images/65070181.jpg";
 
 export default function HomePage() {
   return (
@@ -36,6 +37,10 @@ export default function HomePage() {
           {/* TODO: ชื่อของตนเอง, รหัสประจำตัวนักศึกษา และแนะนำคาเฟ่นี้ต่ออีกสักหน่อย + ใส่รูปของตนเอง (ไม่จำเป็นหากไม่สะดวกใจใส่รูป) */}
           ซึ่งมีบริการ กาแฟ ชา ขนม และหนังสือที่น่าสนใจ สำหรับนักเรียน นักศึกษา และคนทั่วไป ที่ต้องการเรียนรู้เรื่องใหม่ๆ และพักผ่อนอย่างสงบ ๆ ในบรรยากาศที่เป็นกันเอง
         </p>
+
+        <div>
+            <img src={myimg} alt="Panwit Tuwanut" className="h-full w-full object-cover" />
+          </div>
       </section>
 
       <section className="w-full flex justify-center">
