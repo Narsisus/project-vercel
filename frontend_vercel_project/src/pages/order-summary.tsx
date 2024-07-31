@@ -5,14 +5,23 @@ import { Button, Textarea } from "@mantine/core";
 import axios from "axios";
 import { notifications } from "@mantine/notifications";
 import useSWR from "swr";
+import { useForm } from "@mantine/form";
 
 export default function OrderSummaryPage() {
   const navigate = useNavigate();
   const [orderItems, setOrderItems] = useState<any[]>([]);
-  const [comments, setComments] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
 
   const { data: cafes } = useSWR("/cafes");
+
+  const ordersCreateForm = useForm({
+    initialValues: {
+      total_order: [],
+      total_price: 0,
+      comments: "",
+      status: "Pending",
+    },
+  });
 
   useEffect(() => {
     // Retrieve order items from local storage
@@ -34,15 +43,17 @@ export default function OrderSummaryPage() {
   const handleSubmitOrder = async () => {
     setIsProcessing(true);
 
+    // Transform orderItems into total_order format
+    const totalOrder = orderItems.flatMap((item) =>
+      Array(item.quantity).fill(`Cafe ID: ${item.cafeId}`)
+    );
+
     try {
       await axios.post("/orders", {
-        total_or: orderItems.map((item) => ({
-          cafe_id: item.cafeId,
-          quantity: item.quantity,
-        })),
+        total_order: totalOrder,
         total_price: calculateTotalPrice(),
-        comments,
-        status: "Pending",
+        comments: ordersCreateForm.values.comments,
+        status: ordersCreateForm.values.status,
       });
 
       notifications.show({
@@ -89,8 +100,7 @@ export default function OrderSummaryPage() {
         <Textarea
           label="หมายเหตุเพิ่มเติม"
           placeholder="เพิ่มหมายเหตุ"
-          value={comments}
-          onChange={(e) => setComments(e.target.value)}
+          {...ordersCreateForm.getInputProps("comments")}
           className="mt-4"
         />
 

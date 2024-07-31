@@ -18,9 +18,9 @@ export interface Cafe{
 
 export interface Order {
   id: number;
-  customer_name: string;
+  total_order: string[];
   status: string;
-  price: number;
+  total_price: number;
   cafe_id: number;
   comments: string;
 }
