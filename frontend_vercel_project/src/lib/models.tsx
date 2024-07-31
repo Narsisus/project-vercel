@@ -21,6 +21,5 @@ export interface Order {
   total_order: string[];
   status: string;
   total_price: number;
-  cafe_id: number;
   comments: string;
 }
