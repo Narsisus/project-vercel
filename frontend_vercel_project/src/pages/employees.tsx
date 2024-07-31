@@ -4,7 +4,7 @@ import axios from "axios";
 import { Button, Alert } from "@mantine/core";
 import { IconAlertTriangleFilled } from "@tabler/icons-react";
 import Loading from "../components/loading";
-import cafeBackgroundImage from "../assets/images/bg-cafe-2.jpg";
+import cafeBackgroundImage from "../assets/images/lovepik-coffee-bean-picture_500553969.jpg";
 
 interface Order {
   id: number;

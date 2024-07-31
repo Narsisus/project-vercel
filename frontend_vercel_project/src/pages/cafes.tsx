@@ -75,14 +75,24 @@ export default function CafesPage() {
           {cafes?.map((cafe) => (
             <div className="border border-solid border-neutral-200" key={cafe.id}>
               <img
-                src= {cafe.id === 3 ? late : cafe.id === 1 ? espresso : cafe.id === 2 ? americano : cafe.id === 4 ? cappuccino : mocha}
+                src={
+                  cafe.id === 3
+                    ? late
+                    : cafe.id === 1
+                    ? espresso
+                    : cafe.id === 2
+                    ? americano
+                    : cafe.id === 4
+                    ? cappuccino
+                    : mocha
+                }
                 alt={cafe.name}
                 className="w-full object-cover aspect-[3/4]"
               />
               <div className="p-4">
                 <h2 className="text-lg font-semibold line-clamp-2">{cafe.name}</h2>
                 <p className="text-xs text-neutral-500">รายละเอียด {cafe.comments}</p>
-                <p className="text-xs text-neutral-500">ราคา {cafe.price}</p>
+                <p className="text-base text-neutral-700 font-medium">ราคา {cafe.price} บาท</p> {/* เพิ่มขนาดและความหนา */}
               </div>
 
               <div className="flex justify-between px-4 pb-2">
