@@ -15,8 +15,6 @@ export default function OrderSummaryPage() {
 
   const orderCreateForm = useForm({
     initialValues: {
-      total_order: [],
-      total_price: 0,
       comments: "",
     },
   });
@@ -42,7 +40,7 @@ export default function OrderSummaryPage() {
     try {
       await axios.post("/orders", {
         total_order: orderItems.flatMap(item =>
-          Array(item.quantity).fill({ cafe_id: item.cafeId })
+          Array(item.quantity).fill(cafes?.find((cafe: any) => cafe.id === item.cafeId)?.name || "Unknown")  // ใช้ชื่อเมนู
         ),
         total_price: calculateTotalPrice(),
         comments: orderCreateForm.values.comments,
