@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Layout from "../components/layout";
-import cafeBackgroundImage from "../assets/images/coffee-1.jpg";
+import cafeBackgroundImage from "../assets/images/life-coffee-espresso.jpg";
 import useSWR from "swr";
 import { Cafe } from "../lib/models";
 import Loading from "../components/loading";
@@ -70,7 +70,7 @@ export default function CafesPage() {
           {cafes?.map((cafe) => (
             <div className="border border-solid border-neutral-200" key={cafe.id}>
               <img
-                src= "../assets/images/coffee-1.jpg"
+                src= "project-vercel/frontend_vercel_project/src/assets/images/americano.jpg"
                 alt={cafe.name}
                 className="w-full object-cover aspect-[3/4]"
               />
