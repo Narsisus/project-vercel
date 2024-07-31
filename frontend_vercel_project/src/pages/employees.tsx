@@ -15,6 +15,8 @@ interface Order {
 
 export default function EmployeeOrderPage() {
   const { data: orders, error, mutate } = useSWR<Order[]>("/orders");
+  
+  const cafeBackgroundImage = "path/to/cafeBackgroundImage.jpg"; // Add the path to the cafe background image here
 
   const handleOrderCompletion = async (orderId: number) => {
     try {
@@ -27,8 +29,16 @@ export default function EmployeeOrderPage() {
 
   return (
     <Layout>
+      <section
+        className="h-[500px] w-full text-white bg-orange-800 bg-cover bg-blend-multiply flex flex-col justify-center items-center px-4 text-center"
+        style={{ backgroundImage: `url(${cafeBackgroundImage})` }}
+      >
+        <h1 className="text-5xl mb-2">รายการออเดอร์</h1>
+        <h2>รายการออเดอร์ที่รอดำเนินการ</h2>
+      </section>
+      
       <section className="container mx-auto py-8">
-        <h1 className="text-xl mb-4">รายการออเดอร์ที่รอดำเนินการ</h1>
+        <h1 className="text-xl mb-4">รายการออเดอร์</h1>
 
         {!orders && !error && <Loading />}
         {error && (
