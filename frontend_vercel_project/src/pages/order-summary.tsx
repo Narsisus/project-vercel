@@ -38,13 +38,18 @@ export default function OrderSummaryPage() {
   const handleSubmitOrder = async () => {
     setIsProcessing(true);
     try {
+      // Debugging the orderItems and cafes
+      console.log("Order Items:", orderItems);
+      console.log("Cafes:", cafes);
+
       await axios.post("/orders", {
-        total_order: orderItems.flatMap(item =>
-          Array(item.quantity).fill(cafes?.find((cafe: any) => cafe.id === item.cafeId)?.name || "Unknown")  // ใช้ชื่อเมนู
-        ),
+        total_order: orderItems.flatMap(item => {
+          const cafe = cafes?.find((cafe: any) => cafe.id === item.cafeId);
+          return Array(item.quantity).fill(cafe?.name || "Unknown");  // Use cafe name instead of ID
+        }),
         total_price: calculateTotalPrice(),
         comments: orderCreateForm.values.comments,
-        status: "Pending",
+        status: "Pending",  // Set status to "Pending"
       });
 
       notifications.show({
