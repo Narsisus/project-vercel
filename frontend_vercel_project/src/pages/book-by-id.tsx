@@ -15,64 +15,64 @@ export default function BookByIdPage() {
     <>
       <Layout>
         <Container className="mt-4">
-          {/* You can use isLoading instead of !book */}
-          {isLoading && !error && <Loading />}
-          {error && (
-            <Alert
-              color="red"
-              title="เกิดข้อผิดพลาดในการอ่านข้อมูล"
-              icon={<IconAlertTriangleFilled />}
-            >
-              {error.message}
-            </Alert>
-          )}
+          /* You can use isLoading instead of !book */
+                {isLoading && !error && <Loading />}
+                {error && (
+                <Alert
+                  color="red"
+                  title="เกิดข้อผิดพลาดในการอ่านข้อมูล"
+                  icon={<IconAlertTriangleFilled />}
+                >
+                  {error.message}
+                </Alert>
+                )}
 
-          {!!book && (
-            <>
-              <h1>{book.title}</h1>
-              <p className="italic text-neutral-500 mb-4">โดย {book.author}</p>
-              <div className="grid grid-cols-1 lg:grid-cols-3">
-                <img
-                  src="https://placehold.co/150x200"
-                  alt={book.title}
-                  className="w-full object-cover aspect-[3/4]"
-                />
-                <div className="col-span-2 px-4 space-y-2 py-4">
-                  <h3>รายละเอียดหนังสือ</h3>
-                  <p className="indent-4">
+                {!!book && (
+                <>
+                  <h1>{book.title}</h1>
+                  <p className="italic text-neutral-500 mb-4">โดย {book.author}</p>
+                  <div className="grid grid-cols-1 lg:grid-cols-3">
+                  <img
+                    src="https://placehold.co/150x200"
+                    alt={book.title}
+                    className="w-full object-cover aspect-[3/4]"
+                  />
+                  <div className="col-span-2 px-4 space-y-2 py-4">
+                    <h3>รายละเอียดหนังสือ</h3>
+                    <p className="indent-4">
                     {/* TODO: เพิ่มรายละเอียดหนังสือ */}
                     {book.description}
-                  </p>
+                    </p>
 
-                  <h3>เรื่องย่อ</h3>
-                  <p className="indent-4">
+                    <h3>เรื่องย่อ</h3>
+                    <p className="indent-4">
                     {/* TODO: เพิ่มเรื่องย่อ */}
                     {book.summary}
-                  </p>
+                    </p>
 
-                  <h3>หมวดหมู่</h3>
-                  {/* TODO: เพิ่มหมวดหมู่(s) */}
-                  <div className="flex flex-wrap gap-2">
+                    <h3>หมวดหมู่</h3>
+                    {/* TODO: เพิ่มหมวดหมู่(s) */}
+                    <div className="flex flex-wrap gap-2">
                     {book.categories.map((category) => (
                       <Badge key={category} color="teal">#{category}</Badge>
                     ))}
+                    </div>
                   </div>
-                </div>
-              </div>
+                  </div>
 
-              <Divider className="mt-4" />
+                  <Divider className="mt-4" />
 
-              <Button
-                color="blue"
-                size="xs"
-                component={Link}
-                to={`/books/${book.id}/edit`}
-                className="mt-4"
-                leftSection={<IconEdit />}
-              >
-                แก้ไขข้อมูลหนังสือ
-              </Button>
-            </>
+                  <Button
+                  color="blue"
+                  size="xs"
+                  component={Link}
+                  to={`/books/${book.id}/edit`}
+                  className="mt-4"
+                  leftSection={<IconEdit />}
+                  >
+                  แก้ไขข้อมูลหนังสือ
+                  </Button>
+                </>
           )}
         </Container>
       </Layout>
