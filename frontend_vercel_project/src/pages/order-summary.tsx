@@ -41,8 +41,8 @@ export default function OrderSummaryPage() {
   const handleSubmitOrder = async () => {
     setIsProcessing(true);
     try {
-      await axios.post("/orders", {
-        total_order: orderItems.flatMap(item => 
+      const response = await axios.post("/orders", {
+        total_order: orderItems.flatMap(item =>
           Array(item.quantity).fill({ cafe_id: item.cafeId })
         ),
         total_price: calculateTotalPrice(),
@@ -59,11 +59,22 @@ export default function OrderSummaryPage() {
       localStorage.removeItem("orderItems");
       navigate("/cafes");
     } catch (error) {
-      notifications.show({
-        title: "เกิดข้อผิดพลาด",
-        message: "กรุณาลองอีกครั้ง",
-        color: "red",
-      });
+      if (axios.isAxiosError(error)) {
+        // Handle Axios error
+        const errorMessage = error.response?.data?.message || "เกิดข้อผิดพลาดบางอย่าง";
+        notifications.show({
+          title: "เกิดข้อผิดพลาด",
+          message: errorMessage,
+          color: "red",
+        });
+      } else {
+        // Handle non-Axios error
+        notifications.show({
+          title: "เกิดข้อผิดพลาด",
+          message: "กรุณาลองอีกครั้ง หรือดูที่ Console สำหรับข้อมูลเพิ่มเติม",
+          color: "red",
+        });
+      }
     } finally {
       setIsProcessing(false);
     }
