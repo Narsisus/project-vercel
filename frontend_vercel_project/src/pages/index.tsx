@@ -32,6 +32,7 @@ export default function HomePage() {
             <img src={ajPanwitImage} alt="Panwit Tuwanut" className="h-full w-full object-cover" />
           </div>
         </div>
+        <div className="grid grid-cols-3 gap-4">
         <p className="text-right mt-8">
           ปัจจุบันค่าเฟ่ และห้องสมุดของเรา อยู่ในช่วงการดูแลของ นายภูริพัทธ์ ชนะภัย รหัสประจำตัวนักศึกษา 65070181 
           {/* TODO: ชื่อของตนเอง, รหัสประจำตัวนักศึกษา และแนะนำคาเฟ่นี้ต่ออีกสักหน่อย + ใส่รูปของตนเอง (ไม่จำเป็นหากไม่สะดวกใจใส่รูป) */}
@@ -39,8 +40,9 @@ export default function HomePage() {
         </p>
 
         <div>
-            <img src={myimg} alt="Panwit Tuwanut" className="h-full w-full object-cover" />
+            <img src={myimg} alt="65070181" className="h-full w-full object-cover" />
           </div>
+        </div>
       </section>
 
       <section className="w-full flex justify-center">
