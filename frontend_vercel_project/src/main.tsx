@@ -16,6 +16,7 @@ import { ModalsProvider } from "@mantine/modals";
 import BookCreatePage from "./pages/book-create";
 import CafesPage from "./pages/cafes";
 import OrderSummaryPage from "./pages/order-summary";
+import EmployeeOrderPage from "./pages/employees";
 
 
 
@@ -53,6 +54,11 @@ const router = createBrowserRouter([
   {
     path: "/order-summary",
     element: <OrderSummaryPage />,
+  },
+
+  {
+    path: "/employees",
+    element: <EmployeeOrderPage />,
   },
 ]);
 
