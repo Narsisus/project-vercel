@@ -70,7 +70,7 @@ export default function CafesPage() {
           {cafes?.map((cafe) => (
             <div className="border border-solid border-neutral-200" key={cafe.id}>
               <img
-                src= "../assets/images/life-coffee-espresso.jpg"
+                src= "/src/assets/images/life-coffee-espresso.jpg"
                 alt={cafe.name}
                 className="w-full object-cover aspect-[3/4]"
               />
