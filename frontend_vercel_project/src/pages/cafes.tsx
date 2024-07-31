@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Layout from "../components/layout";
 import cafeBackgroundImage from "../assets/images/life-coffee-espresso.jpg";
-import late from "../assets/images/late.jpg";
+import late from "../assets/images/Latte.jpg";
 import espresso from "../assets/images/life-coffee-espresso.jpg";
 import americano from "../assets/images/americano.jpg";
 import cappuccino from "../assets/images/cappuccino.jpg";
