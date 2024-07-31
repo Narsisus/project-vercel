@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import Layout from "../components/layout";
 import cafeBackgroundImage from "../assets/images/bg-cafe-2.jpg";
 import useSWR from "swr";
@@ -99,6 +99,8 @@ export default function CafesPage() {
 
       <div className="fixed bottom-4 left-4">
         <Button
+            component={Link}
+            to={"/order"}
           size="lg"
           variant="primary"
           onClick={handleOrder}
