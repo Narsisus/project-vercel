@@ -100,7 +100,7 @@ export default function CafesPage() {
       <div className="fixed bottom-4 right-4">
         <Button
             component={Link}
-            to={"/order"}
+            to={"/order-create"}
           size="lg"
           variant="primary"
           onClick={handleOrder}
