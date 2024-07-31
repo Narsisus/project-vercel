@@ -1,4 +1,5 @@
-import  { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import Layout from "../components/layout";
 import cafeBackgroundImage from "../assets/images/bg-cafe-2.jpg";
 import useSWR from "swr";
@@ -6,9 +7,9 @@ import { Cafe } from "../lib/models";
 import Loading from "../components/loading";
 import { Alert, Button } from "@mantine/core";
 import { IconAlertTriangleFilled } from "@tabler/icons-react";
-import { Link } from "react-router-dom";
 
 export default function CafesPage() {
+  const navigate = useNavigate();
   const { data: cafes, error } = useSWR<Cafe[]>("/cafes");
   const [orderCounts, setOrderCounts] = useState<{ [key: number]: number }>({});
 
@@ -27,17 +28,23 @@ export default function CafesPage() {
   };
 
   const handleOrder = () => {
-    // Handle order submission here
-    console.log("Ordering", orderCounts);
+    const orderItems = Object.keys(orderCounts)
+      .filter((cafeId) => orderCounts[parseInt(cafeId)] > 0)
+      .map((cafeId) => ({
+        cafeId: parseInt(cafeId),
+        quantity: orderCounts[parseInt(cafeId)],
+      }));
+
+    // Store order data in local storage or state management
+    localStorage.setItem("orderItems", JSON.stringify(orderItems));
+    navigate("/order-create");
   };
 
   return (
     <Layout>
       <section
         className="h-[500px] w-full text-white bg-orange-800 bg-cover bg-blend-multiply flex flex-col justify-center items-center px-4 text-center"
-        style={{
-          backgroundImage: `url(${cafeBackgroundImage})`,
-        }}
+        style={{ backgroundImage: `url(${cafeBackgroundImage})` }}
       >
         <h1 className="text-5xl mb-2">เมนู</h1>
         <h2>รายการเมนูทั้งหมด</h2>
@@ -99,8 +106,6 @@ export default function CafesPage() {
 
       <div className="fixed bottom-4 right-4">
         <Button
-            component={Link}
-            to={"/order-create"}
           size="lg"
           variant="primary"
           onClick={handleOrder}
