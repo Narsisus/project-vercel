@@ -2,7 +2,7 @@ import useSWR from "swr";
 import { Book } from "../lib/models";
 import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../components/layout";
-import { Alert, Button, Checkbox, Container, Divider, NumberInput, TextInput } from "@mantine/core";
+import { Alert, Button, Checkbox, Container, Divider, NumberInput, TextInput, Textarea, MultiSelect } from "@mantine/core";
 import Loading from "../components/loading";
 import { IconAlertTriangleFilled, IconTrash } from "@tabler/icons-react";
 import { isNotEmpty, useForm } from "@mantine/form";
@@ -161,6 +161,24 @@ export default function BookEditById() {
                   min={1900}
                   max={new Date().getFullYear() + 1}
                   {...bookEditForm.getInputProps("year")}
+                />
+
+                <Textarea
+                  label="รายละเอียดหนังสือ"
+                  placeholder="รายละเอียดหนังสือ"
+                {...bookEditForm.getInputProps("description")}
+               />
+
+                <Textarea
+                  label="เรื่องย่อ"
+                  placeholder="เรื่องย่อ"
+                  {...bookEditForm.getInputProps("summary")}
+                />
+
+                <MultiSelect
+                  label="หมวดหมู่(s)"
+                  placeholder="เลือกหมวดหมู่"
+                  {...bookEditForm.getInputProps("categories")}
                 />
                 
 
