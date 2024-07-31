@@ -8,3 +8,19 @@ export interface Book {
   summary: string;
   categories: string[];
 }
+
+export interface Cafe{
+  id: number;
+  name: string;
+  price: number;
+  comments: string;
+}
+
+export interface Order {
+  id: number;
+  customer_name: string;
+  status: string;
+  price: number;
+  cafe_id: number;
+  comments: string;
+}
