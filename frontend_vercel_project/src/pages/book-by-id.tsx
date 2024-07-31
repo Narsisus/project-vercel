@@ -15,7 +15,6 @@ export default function BookByIdPage() {
     <>
       <Layout>
         <Container className="mt-4">
-          {/* You can use isLoading instead of !book */}
           {isLoading && !error && <Loading />}
           {error && (
             <Alert
@@ -29,29 +28,26 @@ export default function BookByIdPage() {
 
           {!!book && (
             <>
-              <h1>{book.title}</h1>
+              <h1 className="text-2xl font-bold">{book.title}</h1>
               <p className="italic text-neutral-500 mb-4">โดย {book.author}</p>
-              <div className="grid grid-cols-1 lg:grid-cols-3">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
                 <img
                   src="https://placehold.co/150x200"
                   alt={book.title}
                   className="w-full object-cover aspect-[3/4]"
                 />
-                <div className="col-span-2 px-4 space-y-2 py-4">
-                  <h3>รายละเอียดหนังสือ</h3>
-                  <p className="indent-4">
-                    {/* TODO: เพิ่มรายละเอียดหนังสือ */}
+                <div className="col-span-2 px-4 py-4 space-y-2">
+                  <h3 className="text-xl font-semibold">รายละเอียดหนังสือ</h3>
+                  <p className="indent-4 break-words">
                     {book.description}
                   </p>
 
-                  <h3>เรื่องย่อ</h3>
-                  <p className="indent-4">
-                    {/* TODO: เพิ่มเรื่องย่อ */}
+                  <h3 className="text-xl font-semibold">เรื่องย่อ</h3>
+                  <p className="indent-4 break-words">
                     {book.summary}
                   </p>
 
-                  <h3>หมวดหมู่</h3>
-                  {/* TODO: เพิ่มหมวดหมู่(s) */}
+                  <h3 className="text-xl font-semibold">หมวดหมู่</h3>
                   <div className="flex flex-wrap gap-2">
                     {book.categories.map((category) => (
                       <Badge key={category} color="teal">#{category}</Badge>
