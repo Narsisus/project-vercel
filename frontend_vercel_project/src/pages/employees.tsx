@@ -4,6 +4,7 @@ import axios from "axios";
 import { Button, Alert } from "@mantine/core";
 import { IconAlertTriangleFilled } from "@tabler/icons-react";
 import Loading from "../components/loading";
+import cafeBackgroundImage from "../assets/images/bg-cafe-2.jpg";
 
 interface Order {
   id: number;
@@ -15,8 +16,6 @@ interface Order {
 
 export default function EmployeeOrderPage() {
   const { data: orders, error, mutate } = useSWR<Order[]>("/orders");
-  
-  const cafeBackgroundImage = "path/to/cafeBackgroundImage.jpg"; // Add the path to the cafe background image here
 
   const handleOrderCompletion = async (orderId: number) => {
     try {
