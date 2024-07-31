@@ -14,6 +14,7 @@ export interface Cafe{
   name: string;
   price: number;
   comments: string;
+  imgpath: string;
 }
 
 export interface Order {
