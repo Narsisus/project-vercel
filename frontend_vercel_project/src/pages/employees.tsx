@@ -26,6 +26,15 @@ export default function EmployeeOrderPage() {
     }
   };
 
+  const handleOrderCancellation = async (orderId: number) => {
+    try {
+      await axios.patch(`/orders/${orderId}`, { status: "Canceled" });
+      mutate(); // Refresh orders list
+    } catch (error) {
+      console.error("Error updating order status:", error);
+    }
+  };
+
   return (
     <Layout>
       <section
@@ -35,7 +44,7 @@ export default function EmployeeOrderPage() {
         <h1 className="text-5xl mb-2">รายการออเดอร์</h1>
         <h2>รายการออเดอร์ที่รอดำเนินการ</h2>
       </section>
-      
+
       <section className="container mx-auto py-8">
         <h1 className="text-xl mb-4">รายการออเดอร์</h1>
 
@@ -64,13 +73,21 @@ export default function EmployeeOrderPage() {
               <p className="text-sm">รายการ: {order.total_order.join(", ")}</p>
               <p className="text-sm">ราคารวม: {order.total_price} บาท</p>
               <p className="text-sm">หมายเหตุ: {order.comments || "ไม่มี"}</p>
-              <Button
-                className="mt-2"
-                variant="filled"
-                onClick={() => handleOrderCompletion(order.id)}
-              >
-                ดำเนินการเสร็จสิ้น
-              </Button>
+              <div className="flex space-x-2 mt-2">
+                <Button
+                  variant="filled"
+                  onClick={() => handleOrderCompletion(order.id)}
+                >
+                  ดำเนินการเสร็จสิ้น
+                </Button>
+                <Button
+                  variant="outline"
+                  color="red"
+                  onClick={() => handleOrderCancellation(order.id)}
+                >
+                  ยกเลิก
+                </Button>
+              </div>
             </div>
           ))}
         </div>
